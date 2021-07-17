@@ -22,5 +22,9 @@ RUN echo "deb https://repo.sovrin.org/sdk/deb xenial master" >> /etc/apt/sources
 RUN useradd -ms /bin/bash -l -u $uid indy
 RUN apt-get update -y && apt-get install -y indy-node libindy
 RUN pip3 install python3-indy
+
+# Download compiled libursa.so binary to the container
+RUN wget -O /usr/lib/libursa.so "https://drive.google.com/uc?id=1lDxZLIsTUZqroBdCf97I0Yueh4OA1k0I&export=download"
+
 USER indy
 WORKDIR /home/indy
